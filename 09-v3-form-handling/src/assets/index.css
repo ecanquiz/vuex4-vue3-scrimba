@@ -1,0 +1,11 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+#app {
+    width: 40%;
+    margin: 28% 18%
+}
+input {
+    margin-top: 5%;
+}
