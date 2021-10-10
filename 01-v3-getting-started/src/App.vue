@@ -1,20 +1,25 @@
 <template>
   <div>
-    {{message}}
+    {{ message }}
   </div>
 </template>
 
-<script setup>
-  import { ref } from 'vue'
-  import { useStore } from 'vuex'
+<script>
+import { ref } from "vue";
+import { useStore } from "vuex";
 
-  const message = ref('Hello world')
-  const store = useStore()  
+export default {
+  setup() {
+    const message = ref("Hello world");
+    const store = useStore();
+    const increment = () => {
+      store.commit("increment");
+      console.log(store.state.count);
+    };
 
-  const increment = ()=> {
-    store.commit('increment')
-    console.log(store.state.count)
-  }  
-  
-  increment()
+    increment();
+
+    return { message };
+  },
+};
 </script>
