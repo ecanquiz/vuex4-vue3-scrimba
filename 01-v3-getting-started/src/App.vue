@@ -5,10 +5,18 @@
 </template>
 
 <script setup>
-  // This starter template is using Vue 3 <script setup> SFCs
-  // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
   import { ref } from 'vue'
+  import { useStore } from 'vuex'
+
   const message = ref('Hello world')
+  const store = useStore()  
+
+  const increment = ()=> {
+    store.commit('increment')
+    console.log(store.state.count)
+  }  
+  
+  increment()
 </script>
 
 
