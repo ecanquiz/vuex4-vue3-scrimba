@@ -18,5 +18,3 @@
   
   increment()
 </script>
-
-
