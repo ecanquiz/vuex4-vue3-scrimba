@@ -1,14 +1,22 @@
 <template>
   <div>
-    {{ store.state.count }}
+    {{ count }}
   </div>
 </template>
 
-<script setup>
-  import { ref } from 'vue'
+<script>
+  import { computed } from 'vue'
   import { useStore } from "vuex";
 
-  const store = useStore()   
+  export default {
+    setup() {      
+      const store = useStore();
+      const count = computed(() => store.state.count);
+            
+      return {
+        count
+      };
+    }
+};
+  
 </script>
-
-
