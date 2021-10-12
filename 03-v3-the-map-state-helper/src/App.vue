@@ -13,3 +13,4 @@
   const count = computed(() => store.state.count)
   const countPlusLocalState = () => count.value + localCount.value
 </script>
+
