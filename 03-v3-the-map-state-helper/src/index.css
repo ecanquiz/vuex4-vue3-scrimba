@@ -1,10 +1,10 @@
 html, body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 #app {
-    width: 1%;
-    margin: 25% auto;
-    font-size: 1.9em;
+  width: 1%;
+  margin: 25% auto;
+  font-size: 1.9em;
 }
