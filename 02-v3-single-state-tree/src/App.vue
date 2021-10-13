@@ -1,21 +1,19 @@
 <template>
   <div>
-    {{ count }}
+    {{ count}}
   </div>
 </template>
 
 <script>
-  import { computed } from 'vue'
-  import { useStore } from "vuex";
-
   export default {
-    setup() {      
-      const store = useStore();
-      const count = computed(() => store.state.count);
-            
-      return {
-        count
-      };
+    mounted() {
+
+        console.log(this.$store.state.count)
+    },
+    computed: {
+      count () {
+        return this.$store.state.count
+      }
     }
 };
   
