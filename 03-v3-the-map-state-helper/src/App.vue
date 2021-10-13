@@ -1,15 +1,26 @@
 <template>
   <div>
-    {{ count }}
+     <p>count: {{count}}</p>
+     <p>countAlias: {{ countAlias }}</p>
+     <p>countPlusLocalState: {{ countPlusLocalState }}</p>
   </div>
 </template>
 
-<script setup>
-  import { ref, computed } from 'vue'
-  import { useStore } from "vuex";
+<script>
+import { mapState } from 'vuex'
 
-  const store = useStore()  
-  const count = computed(() => store.state.count)    
+export default {
+  data() {
+    return {
+     localCount: 1 
+    }
+  },
+  computed: mapState({
+    count: state => state.count,
+    countAlias: 'count',
+    countPlusLocalState (state) {
+      return state.count + this.localCount
+    }
+  })
+};
 </script>
-
-
