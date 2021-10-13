@@ -9,17 +9,21 @@ import { ref } from "vue";
 import { useStore } from "vuex";
 
 export default {
-  setup() {
-    const message = ref("Hello world");
-    const store = useStore();
-    const increment = () => {
-      store.commit("increment");
-      console.log(store.state.count);
-    };
-
-    increment();
-
-    return { message };
+  data() {
+    return {
+      message: "Hello world"
+    }
   },
+  mounted() {
+    this.increment();
+  },
+  methods: {
+    increment() {
+      this.$store.commit('increment')
+      console.log(this.$store.state.count)
+    }
+  }
 };
+
 </script>
+
