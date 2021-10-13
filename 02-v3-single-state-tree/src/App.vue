@@ -5,16 +5,13 @@
 </template>
 
 <script>
-  export default {
-    mounted() {
 
-        console.log(this.$store.state.count)
-    },
-    computed: {
-      count () {
-        return this.$store.state.count
-      }
+export default {
+  computed: {
+    count () {
+      return this.$store.state.count
     }
+  }
 };
   
 </script>
