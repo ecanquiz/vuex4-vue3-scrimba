@@ -11,18 +11,19 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 
 export default {
 
-  computed: {
-    todos () { return this.$store.state.todos },
+  computed: {   
     /*
+       todos () { return this.$store.state.todos },
        doneTodos () { return this.$store.getters.doneTodos },
        doneTodosCount () { return this.$store.getters.doneTodosCount },
        getTodoById () { return id => this.$store.getters.getTodoById(id) },
     */
+    ...mapState(['todos']),
     ...mapGetters([
       'doneTodos',
       'doneTodosCount',
