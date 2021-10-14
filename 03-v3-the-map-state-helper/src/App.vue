@@ -4,12 +4,18 @@
   </div>
 </template>
 
-<script setup>
-  import { ref, computed } from 'vue'
-  import { useStore } from "vuex";
+<script>
+import { computed } from "vue";
+import { useStore } from "vuex";
 
-  const store = useStore()  
-  const count = computed(() => store.state.count)    
+export default {
+  setup() {
+    const store = useStore();
+    const count = computed(() => store.state.count);
+
+    return {
+      count,
+    };
+  },
+};
 </script>
-
-
