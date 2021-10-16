@@ -1,19 +1,24 @@
 <template>
   <div>
-    {{count}}
+    {{ count }}
     <button @click='increment'>+</button>
     <button @click='decrement'>-</button>
+    <button @click='actionB'>actionB</button>
+    <button @click='actionsD'>actionD</button>
   </div>
 </template>
 
-<script setup>
-  import { ref, computed } from 'vue'
-  import { useStore } from "vuex";
+<script>
+import { mapState, mapActions, mapMutations } from 'vuex';
 
-  const store = useStore()  
-  const count = computed(() => store.state.count)
-  
-  const increment = ()=> store.commit('increment')  
-  const decrement = ()=> store.commit('decrement')
+export default {
+  computed: mapState([ 'count' ]),
+  methods: {
+     //increment () { this.$store.dispatch('incrementAsync'); },
+     //decrement () { this.$store.commit('decrement'); }     
+    ...mapMutations(['decrement']),
+    ...mapActions({increment: 'incrementAsync', actionB: 'actionB', actionsD: 'actionD' })
+  }
+};
 </script>
 
