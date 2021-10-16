@@ -4,7 +4,7 @@
     <button @click='increment'>+</button>
     <button @click='decrement'>-</button>
     <button @click='actionB'>actionB</button>
-    <button @click='actionsD'>actionD</button>
+    <button @click='actionD'>actionD</button>
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
      //increment () { this.$store.dispatch('incrementAsync'); },
      //decrement () { this.$store.commit('decrement'); }     
     ...mapMutations(['decrement']),
-    ...mapActions({increment: 'incrementAsync', actionB: 'actionB', actionsD: 'actionD' })
+    ...mapActions({increment: 'incrementAsync', actionB: 'actionB', actionD: 'actionD' })
   }
 };
 </script>
