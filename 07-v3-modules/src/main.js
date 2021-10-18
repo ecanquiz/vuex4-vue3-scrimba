@@ -1,40 +1,25 @@
 import { createApp } from 'vue'
-import { createStore } from 'vuex'
+import store from './store/'
 import App from './App.vue'
-
-const moduleA = {
-    state: { },
-    mutations: { },
-    getters: { },
-    actions: { }
-}
-
-const moduleB = {
-    state: { },
-    mutations: { },
-    getters: { },
-    actions: { }
-}
-
-const store = createStore({
-  state: {
-    count: 2
-  },
-  mutations: {
-    increment (state) {
-      state.count++
-    },
-    decrement (state) {
-      state.count--
-    }
-  },  
-  getters: { },
-  actions: { }
-})
 
 createApp(App)
   .use(store)
   .mount('#app')
 
-// console.log(store.state.a.count);
-// console.log(store.state.b.count);
+//store.commit('increment');
+//store.commit('a/increment');
+//console.log(store.state.a.count);
+//console.log(store.state.b.count);
+
+store.commit('increment');
+store.commit('a/increment'); 
+console.log(store.state.count);
+console.log(store.state.a.count);
+console.log(store.state.b.count);
+
+store.commit('b/subModule/login');
+store.dispatch('b/subModule/login');
+//store.getters.login;
+store.getters['b/subModule/login'];
+
+

@@ -6,14 +6,32 @@
   </div>
 </template>
 
-<script setup>
-  import { ref, computed } from 'vue'
-  import { useStore } from "vuex";
+<script>
+import { mapState, mapActions } from 'vuex';
+//import { createNamespacedHelpers } from 'vuex'
+//const { mapState, mapActions } = createNamespacedHelpers('some/nested/module')
 
-  const store = useStore()  
-  const count = computed(() => store.state.count)
-  
-  const increment = ()=> store.commit('increment')  
-  const decrement = ()=> store.commit('decrement')
+
+
+export default {  
+  computed: { 
+    count () { return this.$store.state.count },
+    ...mapState({
+    a: state => state.a.count,
+    b: state => state.b.count,
+    bSubModule: state => state.b.subModule.count
+  })
+  },
+  methods: {
+    increment () { this.$store.commit('increment') },
+    decrement () { this.$store.commit('decrement') },
+    //...mapActions([
+    //  'some/nested/module/foo' // this['some/nested/module/foo']()
+    //])
+    ...mapActions('some/nested/module', [
+      'foo' // this.foo()
+    ])    
+  }
+};
 </script>
 
