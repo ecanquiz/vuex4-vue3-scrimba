@@ -1,47 +1,13 @@
+import subModule from './subModule'
 export default {
   namespaced: true,
   modules: {
-    subModule: {
-      namespaced: true,
-      state: () => ({
-              
-      }),
-      mutations: {
-        login () {}       
-      },
-      getters: {
-        login () {}      
-      },
-      actions: {
-        login () {}      
-      }
-    }
+    subModule
   },
   state: () => ({
     count: 8
   }),
-  mutations: {
-  
-  },
-  getters: {
-    someGetter (state, getters, rootState, rootGetters) {
-      rootState.count;
-      state.count;
-      
-      getters.someOtherGetter;
-      rootGetters.someOtherGetter;            
-    }
-  },
-  actions: {
-    someAction({ dispatch, commit, getters, rootGetters }) {
-      getters.someGetter;
-      rootGetters.someGetter;
-      
-      dispatch('someOtherAction');
-      dispatch('someOtherAction', null, { root: true });
-      
-      commit('someMutation');
-      commit('someMutation', null, { root: true });            
-    }
-  }
+  mutations: { },
+  getters: { },
+  actions: { }
 }

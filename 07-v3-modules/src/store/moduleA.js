@@ -8,14 +8,6 @@ export default {
       state.count++
     }
   },
-  getters: {
-    doubleCount (state) {
-      return state.count * 2
-    },
-    sumWithRootCount (state, getters, rootState) {
-      return state.count + rootState.count
-    }
-  },
   actions: {
     incrementIfOdd({state, commit}) {
       if (state.count % 2 === 1) {
@@ -27,6 +19,17 @@ export default {
         commit('increment')
       }
     }    
-  }
+  },
+  getters: {
+    doubleCount (state) {
+      return state.count * 2
+    },
+    sumWithRootCount (state, getters, rootState) {
+      return state.count + rootState.count
+    },
+    tripleCount (state) {
+      return state.count * 3
+    }
+  },
 }
 

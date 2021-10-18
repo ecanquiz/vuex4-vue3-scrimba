@@ -1,15 +1,13 @@
 import { createStore } from 'vuex'
 import moduleA from './moduleA'
 import moduleB from './moduleB'
-import account from './account'
-import foo from './foo'
+import moduleC from './moduleC'
 
 export default createStore({
   modules: {
-    a: moduleA,
-    b: moduleB,
-    account,
-    foo
+    moduleA,
+    moduleB,    
+    moduleC
   },
   state: () => ({
     count: 2
@@ -22,11 +20,20 @@ export default createStore({
       state.count--
     }
   },  
-  getters: { },
   actions: {
-    someOtherAction ({dispatch}) {
-      dispatch('someAction')
+    asyncIncrement ({dispatch}) {
+      setTimeout(() => {
+        dispatch('someOtherAction')
+      }, 1000)
+    },
+    someOtherAction ({commit}) {    
+      commit('increment')
     }
+  },
+  getters: {  
+    tripleCount (state) {
+      return state.count * 3
+    }  
   }
 });
 
