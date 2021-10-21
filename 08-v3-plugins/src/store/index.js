@@ -4,6 +4,7 @@ import moduleB from './moduleB'
 import moduleC from './moduleC'
 
 export default createStore({
+  strict: process.env.NODE_ENV !== 'production',
   plugins: process.env.NODE_ENV !== 'production'
     ? [createLogger()] : [],
   modules: {
