@@ -1,14 +1,31 @@
 <template>
   <div>
-    {{message}}<br>
+    {{ message }}<br>
+    <!--input :value="message" @input="updateMessage"-->
     <input v-model='message' />
   </div>
 </template>
 
-<script setup>
-  import { computed } from 'vue'
-  import { useStore } from "vuex";
+<script>
+//import { mapState } from 'vuex'
+export default {
 
-  const store = useStore()  
-  const count = computed(() => store.state.message)
+  computed: {
+    //...mapState({ message: state => state.message })    
+    message: {
+      get () {
+        return this.$store.state.message
+      },
+      set (value) {
+        this.$store.commit('updateMessage', value)
+      }    
+    }
+  },  
+  //methods: {
+  //  updateMessage (e) {
+  //    this.$store.commit('updateMessage', e.target.value)
+  //  }
+  //}
+
+};
 </script>
