@@ -2,13 +2,16 @@
   <div>
     {{ doneTodos }}
     <br />
+    <br />
     Completed Todos: {{ doneTodosCount }}
+    <br />
     <br />
     <ul>
       <li v-for="todo in todos" :key="todo.id">
         {{ todo.text }} | {{ todo.done }}
       </li>
     </ul>
+    <br />
     <br />
     Todos by ID {{ id }}: {{ getTodosById }}
   </div>
