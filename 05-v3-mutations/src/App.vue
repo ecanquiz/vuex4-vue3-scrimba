@@ -1,18 +1,29 @@
 <template>
   <div>
-    {{count}}
-    <!-- <button @click='increment'>+</button> -->
+    <div>{{ "count: " + count }}</div>
+    <div><button @click="increment()">+</button></div>
+    <div><button @click="incrementBy()">x10</button></div>
   </div>
 </template>
+<script>
+import { computed } from "vue";
+import { useStore } from "vuex";
+export default {
+  setup() {
+    const store = useStore();
+    const count = computed(() => {
+      return store.getters.getCount;
+    });
 
-<script setup>
-  import { ref, computed } from 'vue'
-  import { useStore } from "vuex";
+    function increment() {
+      store.commit({ type: "increment" });
+    }
 
-  const store = useStore()  
-  const count = computed(() => store.state.count)
-  
-  // computed: mapState(['count'])  // Not working with Compositions API
+    function incrementBy() {
+      store.commit({ type: "incrementBy", value: 10 });
+    }
+
+    return { count, increment, incrementBy };
+  },
+};
 </script>
-
-
