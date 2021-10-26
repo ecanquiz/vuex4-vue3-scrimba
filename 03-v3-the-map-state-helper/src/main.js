@@ -4,8 +4,8 @@ import App from './App.vue'
 
 const store = createStore({
   state: {
-        count: 0
-    }
+    count: 0
+  }
 })
 
 createApp(App)

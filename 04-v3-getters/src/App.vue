@@ -8,12 +8,14 @@
   </div>
 </template>
 
-<script setup>
-  import { ref, computed } from 'vue'
-  import { useStore } from "vuex";
-
-  const store = useStore()  
-  const todos = computed(() => store.state.todos)    
+<script>
+export default {
+  computed: {
+    todos() {
+      return this.$store.state.todos;
+    }
+  }
+};    
 </script>
 
 

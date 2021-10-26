@@ -6,14 +6,21 @@
   </div>
 </template>
 
-<script setup>
-  import { ref, computed } from 'vue'
-  import { useStore } from "vuex";
-
-  const store = useStore()  
-  const count = computed(() => store.state.count)
-  
-  const increment = ()=> store.commit('increment')  
-  const decrement = ()=> store.commit('decrement')
+<script>
+export default {
+  computed: {
+    count () {
+      return this.$store.state.count;
+    }
+  },
+  methods: {
+    increment() {
+      this.$store.commit('increment');
+    },
+    decrement() {
+      this.$store.commit('decrement');
+    }
+  }
+};
 </script>
 

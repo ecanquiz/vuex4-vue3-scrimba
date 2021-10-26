@@ -5,14 +5,14 @@
   </div>
 </template>
 
-<script setup>
-  import { ref, computed } from 'vue'
-  import { useStore } from "vuex";
-
-  const store = useStore()  
-  const count = computed(() => store.state.count)
-  
-  // computed: mapState(['count'])  // Not working with Compositions API
+<script>
+export default {
+  computed: {
+    count() {
+      return this.$store.state.count;
+    }
+  }
+};  
 </script>
 
 

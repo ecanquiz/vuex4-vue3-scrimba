@@ -22,8 +22,4 @@ createApp(App)
 
 
 // Testing
-mocha.setup('bdd');
-let assert = chai.assert;
-let expect = chai.expect;
 
-mocha.run();
