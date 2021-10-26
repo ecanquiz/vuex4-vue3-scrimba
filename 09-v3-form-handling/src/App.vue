@@ -5,10 +5,12 @@
   </div>
 </template>
 
-<script setup>
-  import { computed } from 'vue'
-  import { useStore } from "vuex";
-
-  const store = useStore()  
-  const count = computed(() => store.state.message)
+<script>
+export default {
+  computed: {
+    message () {
+      return this.$store.state.message;
+    }
+  }
+};
 </script>
