@@ -1,17 +1,26 @@
 <template>
   <div>
-    {{message}}
+    {{ message }}
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      message: 'Hello world'
+      message: "Hello world"
+    }
+  },
+  mounted() {
+    this.increment();
+  },
+  methods: {
+    increment() {
+      this.$store.commit('increment')
+      console.log(this.$store.state.count)
     }
   }
 };
-</script>
 
+</script> 
 

@@ -6,3 +6,5 @@ module.exports = {
     "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
   },
 }
+
+

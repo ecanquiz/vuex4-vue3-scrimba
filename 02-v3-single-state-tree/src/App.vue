@@ -1,11 +1,17 @@
 <template>
   <div>
-    {{ $store.state.count }}
+    {{ count}}
   </div>
 </template>
 
 <script>
-export default {};  
+
+export default {
+  computed: {
+    count () {
+      return this.$store.state.count
+    }
+  }
+};
+  
 </script>
-
-
