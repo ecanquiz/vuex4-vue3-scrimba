@@ -1,3 +1,21 @@
+<script setup>
+import { computed } from "vue";
+import { useStore } from "vuex";
+
+const store = useStore();
+
+const count = computed(() => store.state.count);
+const products = computed(() => store.state.products);
+
+const filterCategory = "fruit";
+const filteredProducts = computed(() =>
+  store.getters.filteredProducts({ filterCategory })
+);
+
+const increment = () => store.commit("increment");
+const incrementAsync = () => store.dispatch("incrementAsync");
+</script>
+
 <template>
   <div>
     <p>Count: {{ count }}</p>
@@ -7,32 +25,3 @@
     <p>Filtered Products: {{ filteredProducts }}</p>
   </div>
 </template>
-
-<script>
-import { computed } from "vue";
-import { useStore } from "vuex";
-export default {
-  setup() {
-    const store = useStore();
-
-    const count = computed(() => store.state.count);
-    const products = computed(() => store.state.products);
-
-    const filterCategory = "fruit";
-    const filteredProducts = computed(() =>
-      store.getters.filteredProducts({ filterCategory })
-    );
-
-    const increment = () => store.commit("increment");
-    const incrementAsync = () => store.dispatch("incrementAsync");
-
-    return {
-      count,
-      products,
-      filteredProducts,
-      increment,
-      incrementAsync,
-    };
-  },
-};
-</script>
