@@ -44,66 +44,33 @@ export default {
       console.log("Init Module C Count", store.state.moduleC.count);
     });
 
-    const count = computed(() => store.state.count);
-    const aCount = computed(() => store.state.moduleA.count);
-    const bCount = computed(() => store.state.moduleB.count);
-    const bSubCount = computed(() => store.state.moduleB.subModule.count);
-    const cCount = computed(() => store.state.moduleC.count);
-
-    const aDoubleCount = computed(() => store.getters["moduleA/doubleCount"]);
-    const aSumWithRootCount = computed(
-      () => store.getters["moduleA/sumWithRootCount"]
-    );
-    const bDoubleSubCount = computed(
-      () => store.getters["moduleB/subModule/doubleCoun"]
-    );
-    const cSumOfAllTripleCounters = computed(
-      () => store.getters["moduleC/sumOfAllTripleCounters"]
-    );
-
-    function increment() {
-      store.commit({ type: "increment" });
-    }
-
-    function decrement() {
-      store.commit({ type: "decrement" });
-    }
-
-    function aIncrement() {
-      store.commit({ type: "moduleA/increment" });
-    }
-
-    function sBIncrement() {
-      store.commit({ type: "moduleB/subModule/increment" });
-    }
-
-    const asyncIncrement = () => store.dispatch("asyncIncrement");
-    const aIncrementIfOdd = () => store.dispatch("moduleA/incrementIfOdd");
-    const aIncrementIfOddOnRootSum = () =>
-      store.dispatch("moduleA/incrementIfOddOnRootSum");
-    const asyncSBIncrement = () =>
-      store.dispatch("moduleB/subModule/asyncIncrement");
-    const cSomeAction = () => store.dispatch("moduleC/someAction");
-
     return {
-      count,
-      aCount,
-      bCount,
-      bSubCount,
-      cCount,
-      aDoubleCount,
-      aSumWithRootCount,
-      bDoubleSubCount,
-      cSumOfAllTripleCounters,
-      increment,
-      decrement,
-      aIncrement,
-      sBIncrement,
-      asyncIncrement,
-      aIncrementIfOdd,
-      aIncrementIfOddOnRootSum,
-      asyncSBIncrement,
-      cSomeAction,
+      count: computed(() => store.state.count),
+      aCount: computed(() => store.state.moduleA.count),
+      bCount: computed(() => store.state.moduleB.count),
+      bSubCount: computed(() => store.state.moduleB.subModule.count),
+      cCount: computed(() => store.state.moduleC.count),
+      aDoubleCount: computed(() => store.getters["moduleA/doubleCount"]),
+      aSumWithRootCount: computed(
+        () => store.getters["moduleA/sumWithRootCount"]
+      ),
+      bDoubleSubCount: computed(
+        () => store.getters["moduleB/subModule/doubleCoun"]
+      ),
+      cSumOfAllTripleCounters: computed(
+        () => store.getters["moduleC/sumOfAllTripleCounters"]
+      ),
+      increment: () => store.commit({ type: "increment" }),
+      decrement: () => store.commit({ type: "decrement" }),
+      aIncrement: () => store.commit({ type: "moduleA/increment" }),
+      sBIncrement: () => store.commit({ type: "moduleB/subModule/increment" }),
+      asyncIncrement: () => store.dispatch("asyncIncrement"),
+      aIncrementIfOdd: () => store.dispatch("moduleA/incrementIfOdd"),
+      aIncrementIfOddOnRootSum: () =>
+        store.dispatch("moduleA/incrementIfOddOnRootSum"),
+      asyncSBIncrement: () =>
+        store.dispatch("moduleB/subModule/asyncIncrement"),
+      cSomeAction: () => store.dispatch("moduleC/someAction"),
     };
   },
 };
