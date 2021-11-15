@@ -11,12 +11,11 @@ import { useStore } from "vuex";
 export default {
   setup() {
     const store = useStore();
-    const count = computed(() => {
-      return store.state.count;
-    });
 
     return {
-      count,
+      count: computed(() => {
+        return store.state.count;
+      }),
     };
   },
 };
