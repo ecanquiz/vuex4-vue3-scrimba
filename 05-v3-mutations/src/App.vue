@@ -11,19 +11,18 @@ import { useStore } from "vuex";
 export default {
   setup() {
     const store = useStore();
-    const count = computed(() => {
-      return store.getters.getCount;
-    });
 
-    function increment() {
-      store.commit({ type: "increment" });
-    }
-
-    function incrementBy() {
-      store.commit({ type: "incrementBy", value: 10 });
-    }
-
-    return { count, increment, incrementBy };
+    return {
+      count: computed(() => {
+        return store.getters.getCount;
+      }),
+      increment: () => {
+        store.commit({ type: "increment" });
+      },
+      incrementBy: () => {
+        store.commit({ type: "incrementBy", value: 10 });
+      },
+    };
   },
 };
 </script>
