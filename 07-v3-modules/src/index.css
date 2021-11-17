@@ -7,7 +7,7 @@ html, body {
     flex-direction: row;
     align-content: center;
     justify-content: center;
-    margin-top: 20%
+    margin-top: 3%
 }
 #app > * {
     margin-left: 15px;
