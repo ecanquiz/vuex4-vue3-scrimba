@@ -5,22 +5,24 @@
 </template>
 
 <script>
+import { ref, onMounted } from "vue";
+import { useStore } from "vuex";
+
 export default {
-  data() {
-    return {
-      message: "Hello world"
-    }
-  },
-  mounted() {
-    this.increment();
-  },
-  methods: {
-    increment() {
-      this.$store.commit('increment')
-      console.log(this.$store.state.count)
-    }
+  setup() {
+
+    const store = useStore();
+    const message = ref("Hello world");
+    
+    const increment = () => {
+        store.commit("increment");
+        console.log(store.state.count);
+      };
+
+    onMounted(() => increment());
+
+    return { message, increment };
+    
   }
 };
-
-</script> 
-
+</script>
