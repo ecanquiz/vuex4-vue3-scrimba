@@ -11,26 +11,20 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+  import { ref, computed } from 'vue';
+  import { useStore } from "vuex";
 
+  export default {
+    setup() {
+      const store = useStore();
 
-export default {
-
-  computed: {   
-    /*
-       todos () { return this.$store.state.todos },
-       doneTodos () { return this.$store.getters.doneTodos },
-       doneTodosCount () { return this.$store.getters.doneTodosCount },
-       getTodoById () { return id => this.$store.getters.getTodoById(id) },
-    */
-    ...mapState(['todos']),
-    ...mapGetters([
-      'doneTodos',
-      'doneTodosCount',
-      'getTodoById',
-    ])
-  }
-
-};
+      return {
+        todos: computed(() => store.state.todos),
+        doneTodos: computed(() => store.getters.doneTodos),
+        doneTodosCount: computed(() => store.getters.doneTodosCount),
+        getTodoById: id => store.getters.getTodoById(id)
+      }
+    }
+  };
 </script>
 
