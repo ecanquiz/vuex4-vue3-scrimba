@@ -8,25 +8,24 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
-
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
 export default {
-  data() {
+  setup() {
+    const store = useStore();
+    const amount = ref(0);
+    const count = computed(() => store.state.count);
+    const increment = () => store.commit({ type: "increment" });
+    const incrementBy = () => store.commit({type: "incrementBy", amount: amount.value});
+
     return {
-      amount:0
-    }
+      amount,
+      count,
+      increment,
+      incrementBy
+    };
   },
-  computed: {
-    //count() { return this.$store.state.count; }    
-    ...mapState(['count'])
-  },
-  methods: {
-    //increment() { return this.$store.commit('increment'); },
-    //incrementBy() { return this.$store.commit('incrementBy', {amount: this.amount}); },
-    //incrementBy() { return this.$store.commit({type: 'incrementBy', amount: this.amount}); }
-    ...mapMutations(['increment', 'incrementBy'])
-  }  
-}
+};
 </script>
 
 
