@@ -1,20 +1,19 @@
 import { createStore } from "vuex";
+import { INCREMENT, INCREMENT_BY } from './mutation-types'
 
-export const store = createStore({
+export default createStore({
   state: {
-    count: 0,
-  },
-  getters: {
-    getCount: (state) => {
-      return state.count;
-    },
+    count: 0
   },
   mutations: {
-    increment(state) {
-      state.count++;
+    //increment (state) {
+    [INCREMENT] (state) {
+      state.count++
     },
-    incrementBy(state, payload) {
-      state.count += payload.value;
-    },
-  },
+    //incrementBy (state, payload) {
+    [INCREMENT_BY] (state, payload) {
+      state.count += payload.amount
+    }
+  }
 });
+

@@ -1,27 +1,28 @@
 <template>
   <div>
-    <div>{{ "count: " + count }}</div>
-    <div><button @click="increment()">+</button></div>
-    <div><button @click="incrementBy()">x10</button></div>
+    {{ count }}
+    <button @click='increment'>+ 1</button>
+    <input v-model="amount" type="number" />        
+    <button @click='incrementBy({amount})'>+ input</button>  
   </div>
 </template>
+
 <script>
-import { computed } from "vue";
+import { ref, computed } from "vue";
 import { useStore } from "vuex";
 export default {
   setup() {
     const store = useStore();
+    const amount = ref(0);
+    const count = computed(() => store.state.count);
+    const increment = () => store.commit({ type: "increment" });
+    const incrementBy = () => store.commit({type: "incrementBy", amount: amount.value});
 
     return {
-      count: computed(() => {
-        return store.getters.getCount;
-      }),
-      increment: () => {
-        store.commit({ type: "increment" });
-      },
-      incrementBy: () => {
-        store.commit({ type: "incrementBy", value: 10 });
-      },
+      amount,
+      count,
+      increment,
+      incrementBy
     };
   },
 };
