@@ -9,16 +9,20 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations } from 'vuex';
-
+import { ref, computed } from 'vue'
+import { useStore } from "vuex";
+  
 export default {
-  computed: mapState([ 'count' ]),
-  methods: {
-     //increment () { this.$store.dispatch('incrementAsync'); },
-     //decrement () { this.$store.commit('decrement'); }     
-    ...mapMutations(['decrement']),
-    ...mapActions({increment: 'incrementAsync', actionB: 'actionB', actionD: 'actionD' })
-  }
+  setup(){
+    const store = useStore();
+    return {
+      count: computed(() => store.state.count),
+      increment: () => store.dispatch('incrementAsync'),
+      decrement: () => store.commit('decrement'), 
+      actionB: () => store.dispatch('actionB'),
+      actionD: () => store.dispatch('actionD'),
+    }
+  }  
 };
 </script>
 
