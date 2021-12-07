@@ -1,4 +1,5 @@
 import subModule from './subModule'
+
 export default {
   namespaced: true,
   modules: {

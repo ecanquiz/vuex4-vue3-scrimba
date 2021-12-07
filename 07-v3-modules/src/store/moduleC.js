@@ -13,12 +13,12 @@ export default {
   },  
   actions: {
     someAction ({ dispatch, commit, getters, rootGetters }) {
-      commit('increment');
-      commit('increment', null, { root: true });
+      commit('increment')
+      commit('increment', null, { root: true })
 
-      let payload = getters.tripleCount + rootGetters.tripleCount + rootGetters['moduleA/tripleCount'];
-      dispatch('someOtherAction', payload);
-      dispatch('someOtherAction', null, { root: true });
+      let payload = getters.tripleCount + rootGetters.tripleCount + rootGetters['moduleA/tripleCount']
+      dispatch('someOtherAction', payload)
+      dispatch('someOtherAction', null, { root: true })
     },
     someOtherAction (ctx, payload) {
       ctx.commit('addAmount', payload)
