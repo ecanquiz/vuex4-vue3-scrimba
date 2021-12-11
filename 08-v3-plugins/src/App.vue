@@ -26,49 +26,40 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions, mapGetters } from 'vuex';
-//import { createNamespacedHelpers } from 'vuex'
-//const { mapState, mapMutations, sapActions, mapGetters } = createNamespacedHelpers('some/nested/module')
+import { onMounted, computed } from 'vue'
+import { useStore } from 'vuex'
 
-export default {  
-  mounted () {
-   console.log('Init Count Root', this.$store.state.count);
-   console.log('Init Module A Count', this.$store.state.moduleA.count);
-   console.log('Init Module B Count', this.$store.state.moduleB.count);
-   console.log('Init SubModule B Count', this.$store.state.moduleB.subModule.count);
-   console.log('Init Module C Count', this.$store.state.moduleC.count);
-  },
-  computed: { 
-    count () { return this.$store.state.count },
-    ...mapState({
-      aCount: state => state.moduleA.count,
-      bCount: state => state.moduleB.count,
-      bSubCount: state => state.moduleB.subModule.count,
-      cCount: state => state.moduleC.count,
-    }),
-    ...mapGetters({
-      aDoubleCount: 'moduleA/doubleCount',
-      aSumWithRootCount: 'moduleA/sumWithRootCount',
-      bDoubleSubCount: 'moduleB/subModule/doubleCount',
-      cSumOfAllTripleCounters: 'moduleC/sumOfAllTripleCounters'
-    })
-  },
-  methods: {
-    increment () { this.$store.commit('increment') },
-    decrement () { this.$store.commit('decrement') },
-    ...mapMutations({
-      aIncrement: 'moduleA/increment',
-      sBIncrement: 'moduleB/subModule/increment',
-    }),
-    ...mapActions({
-      asyncIncrement: 'asyncIncrement',
-      aIncrementIfOdd: 'moduleA/incrementIfOdd',
-      aIncrementIfOddOnRootSum: 'moduleA/incrementIfOddOnRootSum',
-      asyncSBIncrement: 'moduleB/subModule/asyncIncrement',
-      cSomeAction: 'moduleC/someAction'
-    })
-
+export default {
+  setup(){
+    const store = useStore();
+    onMounted(() => {
+      console.log('Init Count Root', store.state.count);
+      console.log('Init Module A Count', store.state.moduleA.count);
+      console.log('Init Module B Count', store.state.moduleB.count);
+      console.log('Init SubModule B Count', store.state.moduleB.subModule.count);
+      console.log('Init Module C Count', store.state.moduleC.count);
+    });
+    
+    return {    
+      count: computed(() => store.state.count),
+      aCount: computed(() => store.state.moduleA.count),
+      bCount: computed(() => store.state.moduleB.count),
+      bSubCount: computed(() => store.state.moduleB.subModule.count),
+      cCount: computed(() => store.state.moduleC.count),
+      aDoubleCount: computed(() => store.getters['moduleA/doubleCount']),
+      aSumWithRootCount: computed(() => store.getters['moduleA/sumWithRootCount']),
+      bDoubleSubCount: computed(() => store.getters['moduleB/subModule/doubleCount']),
+      cSumOfAllTripleCounters: computed(() => store.getters['moduleC/sumOfAllTripleCounters']),
+      increment: () => store.commit('increment'),
+      decrement: () => store.commit('decrement'),
+      aIncrement: () => store.commit('moduleA/increment'),
+      sBIncrement: () => store.commit('moduleB/subModule/increment'),
+      asyncIncrement: () => store.dispatch('asyncIncrement'),
+      aIncrementIfOdd: () => store.dispatch('moduleA/incrementIfOdd'),
+      aIncrementIfOddOnRootSum: () => store.dispatch('moduleA/incrementIfOddOnRootSum'),
+      asyncSBIncrement: () => store.dispatch('moduleB/subModule/asyncIncrement'),
+      cSomeAction: () => store.dispatch('moduleC/someAction')    
+    }    
   }
 };
 </script>
-

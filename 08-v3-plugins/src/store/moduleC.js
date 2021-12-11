@@ -35,5 +35,3 @@ export const getters = {
     return getters.tripleCount + rootGetters.tripleCount + rootGetters['moduleA/tripleCount']
   }
 };
-
-
