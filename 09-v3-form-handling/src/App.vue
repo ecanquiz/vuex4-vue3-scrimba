@@ -1,3 +1,11 @@
+<template>
+  <div>
+    {{ message }}<br />
+    <!--input :value="message" @input="updateMessage"-->
+    <input v-model="message" />
+  </div>
+</template>
+
 <script>
 import { computed } from "vue";
 import { useStore } from "vuex";
@@ -17,10 +25,3 @@ export default {
   },
 };
 </script>
-<template>
-  <div>
-    {{ message }}<br />
-    <!-- <input :value="message" @input="updateMessage" /> -->
-    <input v-model="message" />
-  </div>
-</template>
