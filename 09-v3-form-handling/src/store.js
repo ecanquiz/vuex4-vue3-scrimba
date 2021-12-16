@@ -2,10 +2,10 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    message: 'Hello Vuex',
+    message: 'Hello Vuex'
   },
   mutations: {
-    updateMessage (state, message) {
+    updateMessage(state, message) {
       state.message = message
     }
   }

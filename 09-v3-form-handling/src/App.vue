@@ -1,31 +1,27 @@
 <template>
   <div>
-    {{ message }}<br>
+    {{ message }}<br />
     <!--input :value="message" @input="updateMessage"-->
-    <input v-model='message' />
+    <input v-model="message" />
   </div>
 </template>
 
 <script>
-//import { mapState } from 'vuex'
+import { computed } from "vue";
+import { useStore } from "vuex";
 export default {
-
-  computed: {
-    //...mapState({ message: state => state.message })    
-    message: {
-      get () {
-        return this.$store.state.message
-      },
-      set (value) {
-        this.$store.commit('updateMessage', value)
-      }    
-    }
-  },  
-  //methods: {
-  //  updateMessage (e) {
-  //    this.$store.commit('updateMessage', e.target.value)
-  //  }
-  //}
-
+  setup() {
+    const store = useStore();
+    return {
+      // message: computed(() => store.state.message),
+      // updateMessage: (e) => {
+      //   store.commit("updateMessage", e.target.value);
+      // },
+      message: computed({
+        get: () => store.state.message,
+        set: (value) => store.commit("updateMessage", value),
+      }),
+    };
+  },
 };
 </script>
