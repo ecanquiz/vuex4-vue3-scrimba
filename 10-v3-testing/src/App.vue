@@ -4,7 +4,7 @@
     <button @click='increment' id="increment">+</button>
     <button @click='incrementAsync' id="incrementAsync">+ (async)</button>
     <p>Products: {{ products }}</p>    
-    <p>Filtered Products: {{ filteredProducts }}</p>
+    <p>Filtered Products: {{ filteredProducts({filterCategory: 'fruit'}) }}</p>
   </div>
 </template>
 
@@ -14,22 +14,13 @@
   export default {
     setup() {      
       const store = useStore();
-      
-      const count = computed(() => store.state.count);
-      const products = computed(() => store.state.products);     
-      
-      const filterCategory = 'fruit'            
-      const filteredProducts = computed(() => store.getters.filteredProducts({filterCategory}));
 
-      const increment = ()=> store.commit('increment');
-      const incrementAsync = () => store.dispatch('incrementAsync');      
-            
       return {
-        count,
-        products,        
-        filteredProducts,
-        increment,
-        incrementAsync
+        count: computed(() => store.state.count),
+        products: computed(() => store.state.products),        
+        filteredProducts: computed(() => store.getters.filteredProducts) ,
+        increment: ()=> store.commit('increment') ,
+        incrementAsync: () => store.dispatch('incrementAsync') 
       };
     }
 };
