@@ -9,16 +9,19 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'
+  import { computed } from 'vue'
+  import { useStore } from "vuex";
+  export default {
+    setup() {      
+      const store = useStore();
 
-export default {
-  computed: {
-    ...mapState(['count', 'products']),
-    ...mapGetters(['filteredProducts'])       
-  },
-  methods: {
-    ...mapMutations(['increment']),
-    ...mapActions(['incrementAsync'])
-  }
+      return {
+        count: computed(() => store.state.count),
+        products: computed(() => store.state.products),        
+        filteredProducts: computed(() => store.getters.filteredProducts) ,
+        increment: ()=> store.commit('increment') ,
+        incrementAsync: () => store.dispatch('incrementAsync') 
+      };
+    }
 };
 </script>
