@@ -1,11 +1,11 @@
 <template>
   <div>
-    {{message}}
+    {{ message }}
   </div>
 </template>
 
 <script setup>
-  import { ref } from 'vue'
+  import { ref, onMounted } from "vue";
   import { useStore } from 'vuex'
 
   const message = ref('Hello world')
@@ -15,6 +15,6 @@
     store.commit('increment')
     console.log(store.state.count)
   }  
-  
-  increment()
+
+  onMounted(() => increment());
 </script>
