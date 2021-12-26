@@ -1,3 +1,15 @@
+<script setup>
+import { ref, computed } from 'vue'
+import { useStore } from "vuex";
+  
+const store = useStore()  
+const count = computed(() => store.state.count)
+const increment = () => store.dispatch('incrementAsync')
+const decrement = () => store.commit('decrement')
+const actionB = () => store.dispatch('actionB')
+const actionD = () => store.dispatch('actionD')
+</script>
+
 <template>
   <div>
     {{ count }}
@@ -7,22 +19,3 @@
     <button @click='actionD'>actionD</button>
   </div>
 </template>
-
-<script>
-import { ref, computed } from 'vue'
-import { useStore } from "vuex";
-  
-export default {
-  setup(){
-    const store = useStore();
-    return {
-      count: computed(() => store.state.count),
-      increment: () => store.dispatch('incrementAsync'),
-      decrement: () => store.commit('decrement'), 
-      actionB: () => store.dispatch('actionB'),
-      actionD: () => store.dispatch('actionD'),
-    }
-  }  
-};
-</script>
-
