@@ -2,10 +2,10 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-       todos: [
-           { id: 1, text: '...', done: true },
-           { id: 2, text: '...', done: false },
-       ]
+    todos: [
+      { id: 1, text: '...', done: true },
+      { id: 2, text: '...', done: false },
+    ]
   },
   getters: {
     doneTodos (state) {
@@ -15,9 +15,8 @@ export default createStore({
       return getters.doneTodos.length
     },    
     getTodoById (state) { 
-        return id => state.todos.find(todo => todo.id === id)
+      return id => state.todos.find(todo => todo.id === id)
     }    
   }
 });
 
-    

@@ -1,3 +1,14 @@
+<script setup>
+import { ref, computed } from "vue"
+import { useStore } from "vuex"
+
+const { state, getters } = useStore()
+const todos = computed(() => state.todos)
+const doneTodos = computed(() => getters.doneTodos)
+const doneTodosCount = computed(() => getters.doneTodosCount)
+const getTodoById = id => getters.getTodoById(id)
+</script>
+
 <template>
   <div>
     <p>Todos: {{ todos }}</p>    
@@ -9,22 +20,4 @@
     </ul>    
   </div>
 </template>
-
-<script>
-  import { ref, computed } from 'vue';
-  import { useStore } from "vuex";
-
-  export default {
-    setup() {
-      const store = useStore();
-
-      return {
-        todos: computed(() => store.state.todos),
-        doneTodos: computed(() => store.getters.doneTodos),
-        doneTodosCount: computed(() => store.getters.doneTodosCount),
-        getTodoById: id => store.getters.getTodoById(id)
-      }
-    }
-  };
-</script>
 
