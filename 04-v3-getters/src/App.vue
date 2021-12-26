@@ -1,30 +1,23 @@
+<script setup>
+import { ref, computed } from "vue"
+import { useStore } from "vuex"
+
+const { state, getters } = useStore()
+const todos = computed(() => state.todos)
+const doneTodos = computed(() => getters.doneTodos)
+const doneTodosCount = computed(() => getters.doneTodosCount)
+const getTodoById = id => getters.getTodoById(id)
+</script>
+
 <template>
   <div>
-    {{ doneTodos }}
-    <br />
-    <br />
-    Completed Todos: {{ doneTodosCount }}
-    <br />
-    <br />
+    <p>Todos: {{ todos }}</p>    
+    <p>Done: {{doneTodos}}</p>
+    <p>Completed Todos: {{ doneTodosCount }}</p>
+    <p>Find By Id 2: {{ getTodoById(2) }}</p>
     <ul>
-      <li v-for="todo in todos" :key="todo.id">
-        {{ todo.text }} | {{ todo.done }}
-      </li>
-    </ul>
-    <br />
-    <br />
-    Todos by ID {{ id }}: {{ getTodosById }}
+      <li v-for="todo in todos" :key="todo.id" >{{todo.text}} | {{todo.done}}</li>
+    </ul>    
   </div>
 </template>
 
-<script setup>
-import { ref, computed } from "vue";
-import { useStore } from "vuex";
-
-const store = useStore();
-const todos = computed(() => store.state.todos);
-const doneTodos = computed(() => store.getters.doneTodos);
-const doneTodosCount = computed(() => store.getters.doneTodosCount);
-const id = ref(2);
-const getTodosById = computed(() => store.getters.getTodoById(id.value));
-</script>
