@@ -11,7 +11,7 @@ export default {
   actions: {
     incrementIfOdd({state, commit}) {
       if (state.count % 2 === 1) {
-        commit('increment');
+        commit('increment')
       }
     },
     incrementIfOddOnRootSum ({ state, commit, rootState }) {
