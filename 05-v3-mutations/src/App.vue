@@ -1,3 +1,14 @@
+<script setup>
+  import { ref, computed } from 'vue'
+  import { useStore } from "vuex";
+
+  const store = useStore()
+  const amount = ref(0)    
+  const count = computed(() => store.state.count)    
+  const increment = () => store.commit('increment')
+  const incrementBy = () => store.commit({type: 'incrementBy', amount: amount.value}) 
+</script>
+
 <template>
   <div>
     {{ count }}
@@ -6,16 +17,3 @@
     <button @click='incrementBy({amount})'>+ input</button>  
   </div>
 </template>
-
-<script setup>
-  import { ref, computed } from 'vue'
-  import { useStore } from "vuex";
-
-  const amount = ref(0)
-  const store = useStore()  
-  const count = computed(() => store.state.count)    
-  const increment = () => store.commit('increment')
-  const incrementBy = () => store.commit({type: 'incrementBy', amount: amount.value}) 
-</script>
-
-
