@@ -5,13 +5,13 @@ export const state = ()=> ({
 });
 
 export const mutations = {
-  increment (state) {
+  increment(state) {
     state.count++
   } 
 };
 
 export const actions = {
-  asyncIncrement ({commit}) {
+  asyncIncrement({commit}) {
     setTimeout(() => {
       commit('increment')
     }, 1000)
@@ -19,8 +19,7 @@ export const actions = {
 };
 
 export const getters = {
-  doubleCount (state) {
+  doubleCount(state) {
     return state.count * 2
   }
 };
-

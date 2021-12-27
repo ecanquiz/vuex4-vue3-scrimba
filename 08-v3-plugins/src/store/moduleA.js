@@ -5,7 +5,7 @@ export const state = ()=> ({
 });
   
 export const mutations = {
-  increment (state) {
+  increment(state) {
     state.count++
   }
 };
@@ -16,7 +16,7 @@ export const actions = {
       commit('increment');
     }
   },
-  incrementIfOddOnRootSum ({ state, commit, rootState }) {
+  incrementIfOddOnRootSum({ state, commit, rootState }) {
     if ((state.count + rootState.count) % 2 === 1) {
       commit('increment')
     }
@@ -24,13 +24,13 @@ export const actions = {
 };
 
 export const getters = {
-  doubleCount (state) {
+  doubleCount(state) {
     return state.count * 2
   },
-  sumWithRootCount (state, getters, rootState) {
+  sumWithRootCount(state, getters, rootState) {
     return state.count + rootState.count
   },
-  tripleCount (state) {
+  tripleCount(state) {
     return state.count * 3
   }
 };

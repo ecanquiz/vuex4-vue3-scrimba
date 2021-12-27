@@ -5,16 +5,16 @@ export const state = ()=> ({
 });
 
 export const mutations = {
-  increment (state) {
+  increment(state) {
     state.count++
   },
-  addAmount (state, payload) {      
+  addAmount(state, payload) {      
     state.count = state.count + payload
   }
 };
 
 export const actions = {
-  someAction ({ dispatch, commit, getters, rootGetters }) {
+  someAction({ dispatch, commit, getters, rootGetters }) {
     commit('increment');
     commit('increment', null, { root: true });
 
@@ -22,13 +22,13 @@ export const actions = {
     dispatch('someOtherAction', payload);
     dispatch('someOtherAction', null, { root: true });
   },
-  someOtherAction (ctx, payload) {
+  someOtherAction(ctx, payload) {
     ctx.commit('addAmount', payload)
   }
 };
 
 export const getters = {
-  tripleCount (state) {
+  tripleCount(state) {
     return state.count * 3
   },
   sumOfAllTripleCounters (state, getters, rootState, rootGetters) {

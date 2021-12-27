@@ -8,8 +8,8 @@ export const state = ()=> ({
   count: 8
 });
 
-export const mutations = { };
+export const mutations = {};
 
-export const actions = { };
+export const actions = {};
 
-export const getters = { };
+export const getters = {};

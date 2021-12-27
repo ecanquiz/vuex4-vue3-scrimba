@@ -1,23 +1,23 @@
 import { createStore, createLogger } from 'vuex'
-import * as moduleA from "./moduleA";
-import * as moduleB from "./moduleB";
-import * as moduleC from "./moduleC";
+import * as moduleA from './moduleA'
+import * as moduleB from './moduleB'
+import * as moduleC from './moduleC'
 
 export const state = ()=> ({
   count: 2
 });
 
 export const mutations = {
-  increment (state) {
+  increment(state) {
     state.count++
   },
-  decrement (state) {
+  decrement(state) {
     state.count--
   }
 };
 
 export const actions = {
-  asyncIncrement ({dispatch}) {
+  asyncIncrement({dispatch}) {
     setTimeout(() => {
       dispatch('someOtherAction')
     }, 1000)
@@ -28,7 +28,7 @@ export const actions = {
 };
 
 export const getters = {
-  tripleCount (state) {
+  tripleCount(state) {
     return state.count * 3
   }  
 };
