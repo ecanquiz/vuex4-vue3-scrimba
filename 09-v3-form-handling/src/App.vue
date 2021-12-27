@@ -1,11 +1,3 @@
-<template>
-  <div>
-    {{message}}<br>
-    <!--input :value="message" @input="updateMessage"-->
-    <input v-model='message' />
-  </div>
-</template>
-
 <script setup>
 import { computed } from 'vue'
 import { useStore } from "vuex";
@@ -20,3 +12,11 @@ const message = computed({
   set: value => store.commit('updateMessage', value)
 })  
 </script>
+
+<template>
+  <div>
+    {{ message }}<br />
+    <!--input :value="message" @input="updateMessage"-->
+    <input v-model="message" />
+  </div>
+</template>
