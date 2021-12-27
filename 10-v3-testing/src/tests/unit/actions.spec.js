@@ -1,4 +1,4 @@
-import { actions } from "../../store";
+import { actions } from '../../store'
 
 const testAction = (action, payload, state, expectedMutations, done) => {
   let count = 0

@@ -10,11 +10,11 @@ export const state = {
 };
 
 export const mutations = {
-  increment (state) { state.count++ }  
+  increment(state) { state.count++ }  
 };
 
 export const actions = {    
-  incrementAsync ({ commit }) {
+  incrementAsync({ commit }) {
     return new Promise((resolve) => {
       setTimeout(() => {
         commit('increment')
@@ -25,7 +25,7 @@ export const actions = {
 };
 
 export const getters = {
-  filteredProducts (state) {
+  filteredProducts(state) {
     return ({filterCategory}) => 
       state.products.filter(product => 
         product.category === filterCategory)

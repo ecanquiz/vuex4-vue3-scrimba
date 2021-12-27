@@ -30,5 +30,3 @@ describe('App.vue', () => {
   })
   
 })
-
-
